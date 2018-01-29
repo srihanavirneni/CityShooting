@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 13
-  productGUID: 68a7e15bec613448f91865251dff8e69
+  productGUID: 607c29ec330ee454e8fa6e0ee69fb6de
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: CityShooting
+  productName: City shooting
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -521,14 +521,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: CityShooting
+  metroPackageName: City shooting
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: CityShooting
+  metroApplicationDescription: City shooting
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -599,11 +599,12 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 71b15906-0aec-41f6-aa4b-10fb770180c0
-  projectName: CityShooting
+  cloudProjectId: 25d46bef-9eac-475a-b281-6bc970aff269
+  projectName: City shooting
   organizationId: srihanavirneni
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
