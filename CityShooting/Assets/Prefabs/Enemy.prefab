@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 195170874723046222}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8299a7bad9de492fa1e9f518cc47ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 2
+  startingHealth: 0
   deathEffect: {fileID: 1806691414038796, guid: eeb9c6f41249c48b0ad627794f91468b,
     type: 2}
+  scoreText: {fileID: 0}
+  scoreValue: 2
 --- !u!136 &136137551669015094
 CapsuleCollider:
   m_ObjectHideFlags: 1

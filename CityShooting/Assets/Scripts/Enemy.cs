@@ -4,16 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : Entitly {
+public class Enemy : Entity {
 
     public enum State {Idle, Chasing, Attacking}
     State currentState;
 
     Color originalColor;
+	//public Score scores;
 
-    NavMeshAgent pathfinder;
+	NavMeshAgent pathfinder;
     Transform target;
-    Entitly targetEntity;
+    Entity targetEntity;
     Material enemyMaterial;
 
     float attackDistanceTreshold = 1.5f;
@@ -28,6 +29,7 @@ public class Enemy : Entitly {
 
 	protected override void Start () {
         base.Start();
+        Debug.Log(" Start");
 
         pathfinder = GetComponent<NavMeshAgent>();
         enemyMaterial = GetComponent<Renderer>().material;
@@ -39,7 +41,7 @@ public class Enemy : Entitly {
             hasTarget = true;
 
 			target = GameObject.FindGameObjectWithTag("Player").transform;
-			targetEntity = target.GetComponent<Entitly>();
+			targetEntity = target.GetComponent<Entity>();
 			targetEntity.OnDeath += OnTargetDeath;
 
 			CollisionRadius = GetComponent<CapsuleCollider>().radius;
@@ -51,7 +53,10 @@ public class Enemy : Entitly {
 	
     void OnTargetDeath()
     {
-        hasTarget = false;
+        Debug.Log(" on target  death");
+	
+
+		hasTarget = false;
         currentState = State.Idle;
     }
 
@@ -67,7 +72,13 @@ public class Enemy : Entitly {
 				{
 					nextAttackTime = Time.time + timeBetweenAttacks;
 					StartCoroutine(Attack());
+                    {
+                        PlayerPrefs.DeleteKey("ScoreText");
+                        PlayerPrefs.SetInt("ScoreText", 0);
+                    }
 				}
+             ///   if (GameObject.FindGameObjectWithTag("Player") != null)
+            
 			}
         }
 

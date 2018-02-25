@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Score : MonoBehaviour {
+[System.Serializable]
+public class Score: MonoBehaviour{
 
-    public Text ScoreText;
+    public int myscore = 0;
+    public Score scoreText;
+
+
+
 }

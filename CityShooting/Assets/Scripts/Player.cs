@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(GunController))]
-public class Player : Entitly {
+public class Player : Entity {
 
     // We need some variables so this one will be a float and that is going to be = to 5
     public float moveSpeed = 5;

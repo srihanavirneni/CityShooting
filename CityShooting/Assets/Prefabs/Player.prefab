@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+  deathEffect: {fileID: 1806691414038796, guid: eeb9c6f41249c48b0ad627794f91468b,
+    type: 2}
+  scoreText: {fileID: 0}
   moveSpeed: 5
 --- !u!136 &136466108069881200
 CapsuleCollider:

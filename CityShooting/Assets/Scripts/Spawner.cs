@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour {
     float nextSpawnTime;
     public Transform PositionOfSpawn;
 
+    public LevelManager levelManager;
+
     private void Start()
     {
         NextWave();
@@ -56,6 +58,7 @@ public class Spawner : MonoBehaviour {
 
         if (enemiesRemainingToSpawn2 == 0)
         {
+            levelManager.WinLevel();
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

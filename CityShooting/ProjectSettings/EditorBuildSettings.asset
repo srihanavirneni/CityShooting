@@ -39,5 +39,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Level10.unity
     guid: fab814dbf45eb476bb1dbb0b191f9434
   - enabled: 1
+    path: Assets/Scenes/YouWin.unity
+    guid: f53bbc8d98dfc43159e2b26ea412186f
+  - enabled: 1
     path: Assets/Scenes/LevelSelection.unity
     guid: 812595705cae54da1aa59a3178059c5f

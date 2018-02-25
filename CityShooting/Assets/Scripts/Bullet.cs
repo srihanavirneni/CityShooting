@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour {
 
     // This is the bullet class
+    public Text myscore;
+    private int scoreValue = 2;
 
     // So lets make a variable called a collision Mask and this will be public and make it type of LayerMask.
     // This will trigger when what object we want to collide which we dont want to collide with the player.
@@ -18,31 +21,15 @@ public class Bullet : MonoBehaviour {
     float SecondsToDestroy = 3;
     // Also this weird name called width of skin
     float WidthOfSkin = .1f;
-
-    void Start ()
+    //public Score scores;
+    public static int count;
+    //private Color color = Color.red;
+	void Start ()
     {
-        // In the start method we need to destroy our bullet after the seconds to destroy;
+        Debug.Log(" Start");
+        count = 0;
+     //   scoreText = GetComponent<Text>(); 
         Destroy(gameObject, SecondsToDestroy);
-
-		// We need an array.
-		// REMEMBER : that arrays store a fixed amount size of collections of elements so if you want a array of waves so do this:
-
-		// public class Wave
-		// {
-		//     public float speed = 12;
-		//     public float enemyCount;
-		//     public float timeBetweenWaves;
-		// }
-
-		// IMPORTANT PART OF CODE 
-		// [System.Serializable]
-	    // public class Wave
-	    // {
-		//     public int enemyCount;
-		//     public float timeBetweenSpawns;
-	    // }
-
-        // So now this will be equal to the physics engine and over lap shpere
 		Collider[] collisions = Physics.OverlapSphere(transform.position, .1f, collisionMask);
         if (collisions.Length > 0)
         {
@@ -56,6 +43,7 @@ public class Bullet : MonoBehaviour {
     }
 
 	void Update () {
+        Debug.Log("update");
         float moveDistance = speed * Time.deltaTime;
         CheckCollisions(moveDistance);
         transform.Translate(Vector3.forward * moveDistance);
@@ -63,6 +51,7 @@ public class Bullet : MonoBehaviour {
 
     void CheckCollisions(float moveDistance)
     {
+        Debug.Log("CheckCollisions");
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
@@ -74,25 +63,49 @@ public class Bullet : MonoBehaviour {
 
     void OnHitObject(RaycastHit hit)
     {
+     
+	//	Debug.LogError("onhitobject");
         IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-
+		
         if (damageableObject != null)
         {
+#region PlayerPrefs
+            count = PlayerPrefs.GetInt("ScoreText", 0);
+            count++;
+          //  ScoreManager.count = count;
+            Debug.Log(" onhitobject : " + count);
+            {
+                PlayerPrefs.SetInt("ScoreText", count);
+                // myscore.text = count.ToString();
+                ScoreManager.SetCount(count); 
+                //scoreText.GetComponent<GameUI>().fadeOut.enabled = true;
+                         //   scoreText.gameObject.SetActive(true);
+            }
+#endregion
             damageableObject.TakeDamage(damage);
+           // if (currentScore > PlayerPrefs.GetInt("ScoreText", 0))
+          
         }
-
+		Debug.Log(" onhitobject : ");
+	
+		
+        //GameObject.Destroy(gameObject);
         GameObject.Destroy(gameObject);
+
     }
+
 
     void OnHitObject(Collider col)
     {
+       Debug.LogError("onhitobject");
 		IDamageable damageableObject = col.GetComponent<IDamageable>();
 
 		if (damageableObject != null)
 		{
 			damageableObject.TakeDamage(damage);
 		}
+	
+        GameObject.Destroy(gameObject);
 
-		GameObject.Destroy(gameObject);
-    }
+   }
 }

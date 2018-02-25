@@ -16,7 +16,8 @@ public class CameraMovement : MonoBehaviour {
 	
 	void LateUpdate () {
         Vector3 newPos = playerTransform.position + cameraOffset;
-
+        if (playerTransform == null)
+            return;
         transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
 	}
 }
